@@ -1,0 +1,93 @@
+// Variáveis globais
+let app = SpreadsheetApp;
+let spreadsheet = app.getActiveSpreadsheet();
+let ui = app.getUi();
+let menu = spreadsheet.getSheetByName('MENU');
+let dbfatu = spreadsheet.getSheetByName('FATURAMENTO_DB');
+let dbdesp = spreadsheet.getSheetByName('DESPESAS_DB');
+
+// Verica erro e executa as três funções
+function fecharDia()
+{
+  // Pega os valores do faturamento no menu
+  let valuesFatu = menu.getRange("C6:C9").getValues();
+
+  // Verifica se todos os valores foram do faturamento preenchidos
+  let erro = 0;
+  valuesFatu.map(function(elem, ind, obj){
+    if(elem[0] == ""){
+      erro+=1;
+    }
+  });
+
+  // Caso não haja erro, executa as outras funções
+  if(erro > 0) 
+  {
+    ui.alert('Preencha todos os campos do faturamento!');
+    return 1;
+  }
+  else
+  {
+    faturamento();
+    despesas();
+    clear();
+    return 0;
+  }
+}
+
+function faturamento()
+{
+  for (i = 7; i < 10; i++)
+  {
+    // Pega os valores no menu e a última linha na base de dados
+    let valuesFatu = menu.getRange("A"+i+":C"+i).getValues();
+    let lastRowFatu = dbfatu.getLastRow() + 1;
+
+    // Coloca os valores do faturamento em um array
+    let arrFatu = [];
+    for(r = 0; r < valuesFatu.length; r++)
+        {
+      for(c = 0; c < valuesFatu[r].length; c++)
+      {
+        arrFatu.push(valuesFatu[r][c]);
+      }
+    }
+
+    // Adiciona os valores à base de dados
+    dbfatu.getRange("A" + lastRowFatu + ":C" + lastRowFatu).setValues([arrFatu]);
+  }
+}
+
+function despesas()
+{
+  for (i = 6; i <= 20; i++)
+  {
+    // Pega os valores no menu e a última linha na base de dados
+    let valuesDesp = menu.getRange("D"+i+":G"+i).getValues();
+    let lastRowDesp = dbdesp.getLastRow() + 1;
+
+    // Coloca os valores de despesas preenchidos em um array
+    let arrDesp = [];
+    valuesDesp.map((elem,obj,ind)=>
+    {
+      for(c = 0; c < valuesDesp[0].length; c++)
+      {
+        arrDesp.push(valuesDesp[0][c]);
+      }
+    });
+
+    // Adiciona os valores à base de dados
+    if(valuesDesp[0][2] > 0){
+      dbdesp.getRange("A" + lastRowDesp + ":D" + lastRowDesp).setValues([arrDesp]);
+    }
+  }
+}
+
+function clear()
+{
+  // Limpa os dados de faturamento e despesas no menu
+  menu.getRange("C7:C9").clearContent();
+  menu.getRange("E6:E20").clearContent();
+  menu.getRange("F6:F20").clearContent();
+}
+

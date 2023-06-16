@@ -1,0 +1,12 @@
+function MENU() {
+  var spreadsheet = SpreadsheetApp.getActive();
+  spreadsheet.getRange('A1').activate();
+  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('MENU'), true);
+};
+
+function HISTORICO() {
+  var spreadsheet = SpreadsheetApp.getActive();
+  spreadsheet.getRange('C12').activate();
+  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('HISTORICO'), true);
+};
+

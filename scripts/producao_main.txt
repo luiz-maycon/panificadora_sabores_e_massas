@@ -1,0 +1,83 @@
+// Variáveis Globais
+let app = SpreadsheetApp;
+let spreadsheet = app.getActiveSpreadsheet();
+let ui = app.getUi();
+let producao = spreadsheet.getSheetByName('PRODUCAO');
+let dbproducao = spreadsheet.getSheetByName('DB_PRODUCAO');
+
+// Verica erro e executa as duas funções
+function fecharDia()
+{
+  // Caso não haja erro (isto é, se a data for tiver sido preenchida), executa as outras funções
+  let valueData = producao.getRange("B27").getValue();
+  if(valueData > 0) 
+  {
+    produzido();
+    clear();
+    return 0;
+  }
+  else
+  {
+    ui.alert('Preencha a data!');
+    return 1;
+  }
+}
+
+function produzido()
+{
+  // Primeira tabela
+  for (i = 7; i <= 24; i++)
+  {
+    // Pega os valores no menu e a última linha na base de dados
+    let values = producao.getRange("A"+i+":D"+i).getValues();
+    let lastRow = dbproducao.getLastRow() + 1;
+
+    // Coloca os valores em um array
+    let arr = [];
+    values.map((elem,obj,ind)=>
+    {
+      for(c = 0; c < values[0].length; c++)
+      {
+        arr.push(values[0][c]);
+      }
+    });
+
+    // Adiciona os valores à base de dados
+    if(values[0][2] > 0){
+      dbproducao.getRange("A" + lastRow + ":D" + lastRow).setValues([arr]);
+    }
+  }
+
+  // Segunda tabela
+  for (i = 7; i <= 24; i++)
+  {
+    // Pega os valores no menu e a última linha na base de dados
+    let values = producao.getRange("E"+i+":H"+i).getValues();
+    let lastRow = dbproducao.getLastRow() + 1;
+
+    // Coloca os valores em um array
+    let arr = [];
+    values.map((elem,obj,ind)=>
+    {
+      for(c = 0; c < values[0].length; c++)
+      {
+        arr.push(values[0][c]);
+      }
+    });
+
+    // Adiciona os valores à base de dados
+    if(values[0][2] > 0){
+      dbproducao.getRange("A" + lastRow + ":D" + lastRow).setValues([arr]);
+    }
+  }
+}
+
+
+function clear()
+{
+  // Limpa os dados das duas tabelas e a data no menu
+  producao.getRange("B7:C24").clearContent();
+  producao.getRange("F7:G24").clearContent();
+  producao.getRange("B27").clearContent();
+}
+

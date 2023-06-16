@@ -1,0 +1,38 @@
+// Variáveis globais
+let app = SpreadsheetApp;
+let spreadsheet = app.getActiveSpreadsheet();
+let ui = app.getUi();
+let menu = spreadsheet.getSheetByName('MENU');
+let data = spreadsheet.getSheetByName('DATA');
+
+function fecharDia()
+{
+  for (i = 8; i <= 10; i++)
+  {
+    // Pega os valores do menu e a última linha de da base de dados
+    let values = menu.getRange("G" + i + ":K" + i).getValues();
+    let lastRow = data.getLastRow()+1;
+ 
+    // Coloca os valores em um array
+    let arr = [];
+    for(r = 0; r < values.length; r++)
+    {
+      for(c = 0; c < values[r].length; c++)
+      {
+        arr.push(values[r][c]);
+      }
+    }
+
+    // Adiciona os valores na base de dados
+    data.getRange("A" + lastRow + ":E" + lastRow).setValues([arr]);
+  }
+
+  clearForm();
+}
+
+// Limpa os dados no menu
+function clearForm()
+{
+  menu.getRange("D5:F29").clearContent();
+}
+

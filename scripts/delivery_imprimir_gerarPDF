@@ -1,0 +1,53 @@
+let PRINT_OPTIONS = {
+  'size': 7,               // Tamanho do papel. 0 = carta, 1 = tablóide, 2 = Ofício, 3 = declaração, 4 = executivo, 5 = fólio, 6 = A3, 7 = A4, 8 = A5, 9 = B4, 10 = B
+  'fzr': false,            // repetir cabeçalhos de linha
+  'portrait': true,        // false = paisagem
+  'fitw': true,            // ajustar a janela ou tamanho real
+  'gridlines': false,      // mostrar linhas de grade
+  'printtitle': false,
+  'sheetnames': false,
+  'pagenum': 'UNDEFINED',  // CENTRO = mostrar números de página / UNDEFINED = não mostrar
+  'attachment': false
+}
+
+let PDF_OPTS = objectToQueryString(PRINT_OPTIONS);
+
+function Pdf()
+{
+
+  SpreadsheetApp.flush();
+  
+  let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = spreadsheet.getSheetByName("IMPRESSÃO");
+  let range = sheet.getRange("B1:E37").activate();
+
+  let gid = sheet.getSheetId();
+  
+  let printRange = objectToQueryString
+  ({
+    'c1': range.getColumn() - 1,
+    'r1': range.getRow() - 1,
+    'c2': range.getColumn() + range.getWidth() - 1,
+    'r2': range.getRow() + range.getHeight() - 1
+  });
+  
+  let url = spreadsheet.getUrl().replace(/edit$/, '') + 'export?format=pdf' + PDF_OPTS + printRange + "&gid=" + gid;
+
+  let htmlTemplate = HtmlService.createTemplateFromFile('AbrirPDF');
+  htmlTemplate.url = url;
+  SpreadsheetApp.getUi().showModalDialog(htmlTemplate.evaluate().setHeight(10).setWidth(100), 'Gerando PDF');
+
+  //Retorna para a página "MENU"
+  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('MENU'), true);
+}
+
+function objectToQueryString(obj)
+{
+  return Object.keys(obj).map(function(key)
+  {
+      return Utilities.formatString('&%s=%s', key, obj[key]);
+  }).join('');
+  
+  
+}
+
