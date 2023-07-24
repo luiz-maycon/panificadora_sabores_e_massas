@@ -34,7 +34,9 @@ Sendo que, o que fosse produzido, seria imediatamente colocado em prática e ava
 
 É importante ressaltar que novos ciclos podem ser acrescentados durante o processo. Abaixo está uma figura que representa o estado atual do planejamento:
 
-![](/img/excalidraw/ciclos_de_construcao.png)
+<p align="center">
+  <img src="/img/excalidraw/ciclos_de_construcao.png">
+</p>
 
 <p align="center">
   Figura 01: Ciclos de Construção do Projeto.
@@ -47,3 +49,65 @@ Sendo que, o que fosse produzido, seria imediatamente colocado em prática e ava
 
 ## 4.0 Construção
 **4.1 Ciclo 1: Coletar os dados de Faturamento e Despesas e Delivery**
+Esta etapa, o pontapé inicial do projeto, surgiu pelo fato da liderança da empresa fazer suas anotações diárias de faturamento e despesas em cadernos. A ideia foi, então, fazer com que fosse utilizada uma planilha para fazer tais anotações de forma mais rápida, fazendo também com que os dados ficassem melhor armazenados em comparação aos cadernos, além de possibilitar futuras análises descritivas para que o empreendedor pudesse compreender melhor o que estava acontecendo em sua empresa. A seguir estão imagens de como está atualmente a planilha “Faturamento & Despesas”:
+
+<p align="center">
+  <img src="/img/telas/fatudesp01.png">
+</p>
+
+<p align="center">
+  Figura 02: tela MENU da planilha Faturamento & Despesas. Apresenta duas tabelas a serem preenchidas. Na primeira o usuário preenche o faturamento do dia separado pelo tipo (dinheiro, cartão e pix) - a data e o valor total já vêm automaticamente. A segunda tabela apresenta uma lista suspensa para o usuário escolher a despesa e, ao lado, colocar o valor (o total vem automaticamente). Além disso, a planilha possui os botões HISTÓRICO que foi criado com um macro que direciona o usuário para uma página que será explicada a seguir e FECHAR DIA que executa a função no script* que salva os dados na base de dados.
+</p>
+
+<p align="center">
+  <img src="/img/telas/fatudesp02.png">
+</p>
+
+<p align="center">
+  Figura 03: página HISTORICO da planilha Faturamento & Despesas. Nela é possível consultar os dados de qualquer data desejada pelo usuário através de funções query. Além disso, possui o botão MENU, que utiliza uma macro para retornar para a paǵina principal.
+</p>
+
+<p align="center">
+  <img src="/img/telas/fatudesp03.png">
+  <img src="/img/telas/fatudesp04.png">
+</p>
+
+<p align="center">
+  Figuras 04 e 05: páginas DB_FATURAMENTO e DB_DESPESAS da planilha Faturamento & Despesas. Essas são as duas bases de dados onde os dados coletados são armazenados.
+</p>
+
+<p align="center">
+  <img src="/img/telas/fatudesp05.png">
+</p>
+
+<p align="center">
+  Figura 06: página LISTA_DESPESAS da planilha Faturamento & Despesas. Essa é a lista de despesas que gera a lista suspensa conforme vista na figura 02.
+</p>
+
+Já se tratando da planilha “Delivery”, essa surgiu de forma bem mais simplificada com o intuito de consolidar as entregas feitas através de dois aplicativos de delivery e pelo Whatsapp. Com o melhor desenvolvimento da Faturamento & Despesas, veio a ideia de adaptar também para essa planilha. Dessa forma, ela foi construída seguindo os mesmos princípios citados anteriormente e conforme as imagens abaixo:
+
+<p align="center">
+  <img src="/img/telas/delivery01.png">
+</p>
+
+<p align="center">
+  Figura 07: página MENU da planilha Delivery. Possui uma tabela com uma coluna para os valores de cada venda, uma coluna com uma lista suspensa trazendo os valores para cada entrega e uma coluna com outra lista suspensa com os tipos de pagamento. Há outra pequena tabela preenchida automaticamente que traz algumas informações gerais e dois botões: FECHAR DIA, que armazena os dados na base de dados através de um script, e IMPRIMIR, que, através de dois scripts, gera um arquivo pdf e o imprime.
+</p>
+
+<p align="center">
+  <img src="/img/telas/delivery02.png">
+</p>
+
+<p align="center">
+  Figura 08: página IMPRIMIR da planilha Delivery. Consolida as principais informações das entregas feitas no dia e utiliza dois scripts para gerar um arquivo pdf e o imprimir.
+</p>
+
+<p align="center">
+  <img src="/img/telas/delivery03.png">
+</p>
+
+<p align="center">
+  Figura 09: página DB_DELIVRY da planilha Delivery. É a base de dados onde os dados coletados são armazenados.
+</p>
+
+###### *Todos os scripts citados podem ser conferidos na pasta “scripts” em formato txt.
