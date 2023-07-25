@@ -1,7 +1,7 @@
 # Panificadora Sabores & Massas
 
 <p align="center">
-  <img src="/img/logo.png">
+  <img src="/img/logo.png" width="70%" height="70%">
 </p>
 
 ## 1.0 Contexto do Negócio
