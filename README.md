@@ -22,9 +22,11 @@ Foi conhecendo esses problemas que um analista de dados, que já convivia diaria
 
 ## 3.0 Planejamento da Solução
 **3.1 Produto Final**
+
 O resultado a ser entregue pelo analista para uso da empresa é, até o momento - lembrando da quarta premissa: I) uma ferramenta que possa coletar e armazenar os dados de três setores nomeados como “Faturamento & Despesas”, “Delivery” e “Produção”; e II) um dashboard para cada setor.
 
 **3.2 Processo**
+
 Sendo que, o que fosse produzido, seria imediatamente colocado em prática e avaliado, o processo de construção foi dividido em ciclos onde a execução de um depende dos resultados de seu anterior, isso inclui uma revisão (e tentativa de melhora) em tudo o que já foi feito para, em seguida, introduzir uma nova funcionalidade. A seguir, estão todos os ciclos planejados até o momento:
 - “Ciclo 01: coletar os dados de Faturamento & Despesas e Delivery”, o que inclui criar duas planilhas com suas interfaces e bases de dados.
 - “Ciclo 02: criar os dashboards de Faturamento & Despesas e Delivery”, sendo necessário esperar alguns dias para que uma boa base de dados seja coletada e, assim, possam ser gerados dashboards com gráficos já planejados, mas que serão limitados pela qualidade e quantidade dos dados que estarão disponíveis.
@@ -49,6 +51,7 @@ Sendo que, o que fosse produzido, seria imediatamente colocado em prática e ava
 
 ## 4.0 Construção
 **4.1 Ciclo 1: Coletar os dados de Faturamento e Despesas e Delivery**
+
 Esta etapa, o pontapé inicial do projeto, surgiu pelo fato da liderança da empresa fazer suas anotações diárias de faturamento e despesas em cadernos. A ideia foi, então, fazer com que fosse utilizada uma planilha para fazer tais anotações de forma mais rápida, fazendo também com que os dados ficassem melhor armazenados em comparação aos cadernos, além de possibilitar futuras análises descritivas para que o empreendedor pudesse compreender melhor o que estava acontecendo em sua empresa. A seguir estão imagens de como está atualmente a planilha “Faturamento & Despesas”:
 
 <p align="center">
@@ -111,3 +114,89 @@ Já se tratando da planilha “Delivery”, essa surgiu de forma bem mais simpli
 </p>
 
 ###### *Todos os scripts citados podem ser conferidos na pasta “scripts” em formato txt.
+
+**4.2 Ciclo 2: Criar os dashboards de Faturamento e Despesas e Delivery**
+
+Após um mês de funcionamento das planilhas Faturamento & Despesas e Delivery, foi dado início um novo passo: começar a utilizar os dados coletados para auxiliar nas tomadas de decisão da empresa
+
+Há, obviamente, alguns pontos a serem considerados para a produção de tais ferramentas, entre eles: I) pouco dados coletados (apenas os dados de um mês); e II) poucos tipos de dados coletados (por se tratar de um projeto mais simples, de introdução de ferramentas).
+
+Dessa forma, a criação dos dashboards seguiu a premissa de tentar capturar algumas informações e insights que podem ser importantes para a liderança da empresa, mas limitado pela quantidade e qualidade dos dados. Conforme o projeto avance, a tendência é que os dashboards e relatórios fiquem cada vez mais completos e eficientes.
+
+Dito isso, está, a seguir, os dashboards Faturamento & Despesas e Delivery em seus estados atuais:
+
+<p align="center">
+  <img src="/img/telas/fatudesp06.png">
+</p>
+
+<p align="center">
+  Figura 10: dashboard Faturamento & Despesas. Seus gráficos trazem, nessa ordem: I) faturamento, despesas e lucro mensais; II) faturamento por tipo de pagamento (dinheiro, cartão e pix); III) faturamento médio por dia da semana; IV) despesas por tipo; e V) despesas com mercadoria por fornecedor.
+</p>
+
+<p align="center">
+  <img src="/img/telas/delivery04.png">
+</p>
+
+<p align="center">
+  Figura 11: dashboard Delivery. Seus gráficos trazem, nessa ordem: I) faturamento por tipo de pagamento (dinheiro, cartão e pix); II) faturamento médio por dia da semana; III) faturamento médio e ticket médio por mês; e IV) valor e quantidade de entregas por mês.
+</p>
+
+**4.3 Ciclo 3: Coletar os dados e criar o dashboard de Produção**
+
+Com a finalização das planilhas e dashboards Faturamento & Despesas e Delivery, surge a idea de iniciar o mesmo processo em outra área da empresa e a escolhida foi a produção, que traz pães, bolos, salgados, sobremesas, biscoitos, bolachas e outros.
+
+O primeiro passo dado foi começar a anotar estritamente tudo o que fosse produzido internamente. Para isso, foi desenvolvida uma planilha personalizada para cada funcionário da produção para que eles as preenchessem manualmente (com caneta e papel) e diariamente, se adaptando, assim, a relatar a sua própria produção. A seguir está a planilha desenvolvida:
+
+<p align="center">
+  <img src="/img/telas/producao01.png">
+</p>
+
+<p align="center">
+  Figura 12: página FICHA_PRODUCAO da planilha Produção. Ficha a ser impressa e entregue a cada funcionário para o preenchimento semanal.
+</p>
+
+Após alguns testes, foi decidido delegar inicialmente a apenas um funcionário a função de passar os dados do papel para a base de dados. A escolha foi essa porque nenhum dos funcionários da produção está adaptado ao uso de tecnologias, dessa forma, a ideia é usar apenas um como teste para que futuramente todos possam relatar sua própria produção já digitalmente.
+
+Assim sendo, foi desenvolvida a planilha de coleta de dados, que pode ser conferida abaixo, e um funcionário foi alocado para, diariamente, relatar em tal planilha a produção de todos os funcionários.
+
+<p align="center">
+  <img src="/img/telas/producao02.png">
+</p>
+
+<p align="center">
+  Figura 13: página MENU da planilha Produção. Traz duas tabelas a serem preenchidas com o produto (em lista suspensa) e a quantidade produzida, um campo para a data da produção e um botão que utiliza um script para armazenar os dados na base de dados.
+</p>
+
+<p align="center">
+  <img src="/img/telas/producao03.png">
+  <img src="/img/telas/producao04.png">
+</p>
+
+<p align="center">
+  Figuras 14 e 15: páginas DB_PRODUCAO e LISTA_PRODUTOS da planilha Produção. A primeira é a base de dados onde os dados coletados são armazenados e a segunda é uma lista com todos os produtos que são produzidos pela empresa.
+</p>
+
+Tendo-se passado um mês desde o início da coleta dos dados na planilha, foi criado o primeiro modelo do dashboard de Produção, conforme pode ser visto abaixo:
+
+<p align="center">
+  <img src="/img/telas/producao05.png">
+</p>
+
+<p align="center">
+  Figura 16: dashboard Produção. Seus gráficos trazem, nessa ordem: I) valor produzido mensalmente; II) quantidade e valor médio produzido por dia da semana, sendo que, para esse e o próximo gráfico, há uma lista suspensa para que um produto seja escolhido para análise individual; e III) quantidade (do produto selecionado) produzida por dia.
+</p>
+
+O projeto encontra-se agora em uma nova fase de revisões dos ciclos antes de iniciar o ciclo 4 e, para o setor de Produção, duas atualizações já foram anotadas, estas são: I) o acréscimo do controle de desperdício; e II) a criação da ficha técnica de produção, que ajudará a padronizar todos os produtos feitos na padaria.
+
+**5.0 Resultados e Conclusões**
+
+Embora o projeto seja recente, isto é, tenha pouco tempo de vida para que traga efeitos altamente eficientes e satisfatórios, ele já possui resultados bastante visíveis. O primeiro é o fato de a liderança da empresa não querer mais utilizar anotações em papeis, estando sempre perguntado por novas funcionalidades nas planilhas.
+
+Os outros pontos importantes se tratam do conhecimento sobre a própria empresa como, por exemplo: I) a percepção da dimensão que a empresa ganhou (pelo seu faturamento), passando de micro para pequena empresa; II) melhoria nas negociações com fornecedoras de maquininha de cartão com base no seu faturamento; III) melhoria nas negociações com empresas fornecedoras de sistemas de gerenciamento; IV) planejamento de atitudes a serem tomadas conforme o faturamento médio por dia da semana; V) organização das despesas em proporções e, como um exemplo desse benefício, uma das decisões tomadas foi a contratação de um novo funcionário com a certeza de continuar com a folha salarial saudável; VI) análise de ampliação do sistema de delivery; VII) melhoria nas negociações e formulação de propostas para entregadores; e VIII) maior controle no aumento e diminuição da produção (tanto de forma geral como em produtos específicos).
+
+Dessa forma, pode-se concluir que o desenvolvimento do projeto trouxe resultados que condizem com os objetivos pretendidos e que a sua continuação tende cada vez mais a melhorar a organização e eficiência da companhia. Isso reforça a importância da introdução de tecnologias e do uso do método de tomadas de decisões orientadas a dados.
+
+**6.0 Próximos Passos**
+- Revisar os ciclos e fazer as atualizações no setor de Produção, conforme mencionado anteriormente;
+- Migrar as bases de dados do Sheets para um banco de dados;
+- Migrar as interfaces do Sheets para uma interface própria.
