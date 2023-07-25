@@ -1,5 +1,9 @@
 # Panificadora Sabores & Massas
 
+<p align="center">
+  <img src="/img/logo.pdf">
+</p>
+
 ## 1.0 Contexto do Negócio
 Há, no interior do Rio Grande do Norte, uma pequena padaria chamada Sabores & Massas com mais de dez anos de idade e que possuia praticamente todos os seus dados anotados em cadernos. Conforme a empresa crescia, foi se tornando cada vez mais difícil manter todos esses dados organizados. Em algum momento, o antigo gerente introduziu um sistema de gerenciamento para auxiliar nas questões burocráticas com a Receita Federal.
 
